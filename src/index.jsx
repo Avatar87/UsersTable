@@ -7,15 +7,15 @@ import classNames from 'classnames';
 import UserListContainer from './containers/UserListContainer';
 
 export class App extends Component {
-  
-  render () {
 
-    return (
-      <Fragment>  
-        <UserListContainer />
-      </Fragment>
-    )
-  }
+	render () {
+
+		return (
+			<Fragment>  
+				<UserListContainer />
+			</Fragment>
+		)
+	}
 
 }
 

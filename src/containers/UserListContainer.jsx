@@ -2,6 +2,9 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 require("bootstrap-less/bootstrap/bootstrap.less");
+import "isomorphic-fetch"
+import ES6Promise from 'es6-promise';
+ES6Promise.polyfill();
 
 import Loading from '../components/Loading';
 import Search from '../components/Search';
@@ -90,7 +93,7 @@ sortBy = (key, event) => {
 handleSendClick1 = (event) => {
 
   this.setState({ loading: true });
-   fetch('http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D')
+   window.fetch('http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D')
     .then((response) => response.json())
     .then((users) => {
       this.setState({
@@ -114,7 +117,7 @@ handleSendClick1 = (event) => {
 handleSendClick2 = (event) => {
 
   this.setState({ loading: true });
-   fetch('http://www.filltext.com/?rows=1000&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&delay=3&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D')
+   window.fetch('http://www.filltext.com/?rows=1000&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&delay=3&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D')
     .then((response) => response.json())
     .then((users) => {
       this.setState({
@@ -137,8 +140,24 @@ handleSendClick2 = (event) => {
     let indexOfLastTodo = this.state.activePage * this.state.itemsCountPerPage;
     let indexOfFirstTodo = indexOfLastTodo - this.state.itemsCountPerPage;
     let renderedUsers = this.state.users.slice(indexOfFirstTodo, indexOfLastTodo);
+    function Object_values(obj) {
+    let vals = [];
+    for (const prop in obj) {
+        vals.push(obj[prop]);
+    }
+    return vals;
+    }
+    String.prototype.includes = function (str) {
+    var returnValue = false;
+
+    if (this.indexOf(str) !== -1) {
+      returnValue = true;
+    }
+
+    return returnValue;
+    }
     const { users, loading, shouldHide, userdata } = this.state;
-    const rows = renderedUsers.filter(user => Object.values(user).toString().toLowerCase().includes(this.state.filterString.toLowerCase())).map((user, idx) => <Row key = {idx} user = {user} onSelect={ data => this.setState({userdata: data})}/>)
+    const rows = renderedUsers.filter(user => Object_values(user).toString().toLowerCase().includes(this.state.filterString.toLowerCase())).map((user, idx) => <Row key = {idx} user = {user} onSelect={ data => this.setState({userdata: data})}/>)
 
     return (
       <Fragment>
