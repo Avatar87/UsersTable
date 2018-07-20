@@ -1,0 +1,70 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.wrap {
+	max-width: 1140px;
+	display: flex;
+	flex-direction: row;
+	margin-left: auto;
+	justify-content: center;
+}
+
+.content1 {
+  background-color: #E6E6E6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+	align-self: center;
+}
+
+.btn-primary {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.buttons {
+	margin-bottom: 10px;
+}
+
+.hidden {
+	 display:none;
+}
+
+.table {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    
+    .header, .row {
+      display: flex;
+
+
+      div {
+        flex: 1;
+        margin-left: 1em;
+        padding: 0.5rem 0.4em;
+        border: 1px solid rgb(238, 238, 238);
+      }
+   }
+    
+    .header {
+      background-color: rgb(238, 238, 238);
+      div { 
+        cursor: pointer;
+      }
+    }
+}
+
+input[type=text] {
+  
+  background-color: rgb(238, 238, 238);
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+
+.body {
+	margin-bottom: 30px;
+}
