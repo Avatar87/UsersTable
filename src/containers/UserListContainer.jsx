@@ -173,7 +173,7 @@ handleSendClick2 = (event) => {
             <div className = {this.state.userdata == '' ? 'hidden' : 'text-center'}>
               Выбран пользователь <b> {this.state.userdata ? this.state.userdata.firstName : 'No user specified'} {this.state.userdata.lastName} </b><br/>
               Описание:<br/><br/>
-              <textarea value = {this.state.userdata ? this.state.userdata.description: 'No user specified'}></textarea><br/><br/>
+              <textarea readOnly value = {this.state.userdata ? this.state.userdata.description: 'No user specified'}></textarea><br/><br/>
               Адрес проживания: <b> {this.state.userdata.address && this.state.userdata.address.streetAddress ? this.state.userdata.address.streetAddress : 'No address specified'} </b><br/>
               Город: <b> {this.state.userdata.address && this.state.userdata.address.streetAddress ? this.state.userdata.address.city : 'No address specified'}</b><br/>
               Провинция/штат: <b> {this.state.userdata.address && this.state.userdata.address.streetAddress ? this.state.userdata.address.state : 'No address specified'} </b><br/>
